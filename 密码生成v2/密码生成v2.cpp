@@ -3,55 +3,15 @@
 #include<ctime>
 void password_num();
 void password_ch();
+void choice();
 using namespace std;
 ofstream outfile;
 
 int main()
 {
-	char input;
-	while (1)
-	{
-		srand(time(0));
-		outfile.open("password.txt", ios::app);//新建一个txt文档保存生成的密码
-
-		system("cls");
-		cout << "N或n:生成6位纯数字密码\n";
-		cout << "M或m:生成10位包含数字、字母和符号的混合密码\n";
-		cout << "输入q退出\n\n生成的密码自动保存在password.txt文档\n\n";
-		cin >> input;
-		if ('n' == input || 'N' == input)
-		{
-			password_num();
-			cout << endl;
-			cout << "输入任意字符继续，输入q退出\n";
-			cin >> input;
-			if ('q' == input || 'Q' == input)
-				exit(0);
-		}
-
-		else if ('m' == input || 'M' == input)
-		{
-			password_ch();
-			cout << "输入任意字符继续，输入q退出\n";
-			cin >> input;
-			if ('q' == input || 'Q' == input)
-				exit(0);
-		}
-		else if ('q' == input || 'Q' == input)
-			exit(0);
-		else
-		{
-			cout << "输入错误，请重新输入\n\n\a";
-			cin >> input;
-			if ('q' == input || 'Q' == input)
-				exit(0);
-			system("pause");
-		}
-		cout << endl;
-	}
+	choice();
 	cout << endl;
 	return 0;
-	outfile.close();
 }
 
 
@@ -117,4 +77,51 @@ void password_ch()
 			outfile << endl;
 	}
 	cout << endl;
+}
+
+
+void choice()
+{
+	char input;
+	while (1)
+	{
+		srand(time(0));
+		outfile.open("password.txt", ios::app);//新建一个txt文档保存生成的密码
+
+		system("cls");
+		cout << "N或n:生成6位纯数字密码\n";
+		cout << "M或m:生成10位包含数字、字母和符号的混合密码\n";
+		cout << "输入q退出\n\n生成的密码自动保存在password.txt文档\n\n";
+		cin >> input;
+		if ('n' == input || 'N' == input)
+		{
+			password_num();
+			cout << endl;
+			cout << "输入任意字符继续，输入q退出\n";
+			cin >> input;
+			if ('q' == input || 'Q' == input)
+				exit(0);
+		}
+
+		else if ('m' == input || 'M' == input)
+		{
+			password_ch();
+			cout << "输入任意字符继续，输入q退出\n";
+			cin >> input;
+			if ('q' == input || 'Q' == input)
+				exit(0);
+		}
+		else if ('q' == input || 'Q' == input)
+			exit(0);
+		else
+		{
+			cout << "输入错误，请重新输入\n\n\a";
+			cin >> input;
+			if ('q' == input || 'Q' == input)
+				exit(0);
+			system("pause");
+		}
+		cout << endl;
+		outfile.close();
+	}
 }
